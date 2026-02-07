@@ -17,7 +17,7 @@ use CortexPE\Commando\RawStringArgument;
 class SetBalanceCommand extends BaseCommand {
     
     protected function prepare() : void{
-        $this->setPermission("mineconomy.set");
+        $this->setPermission($this->getPermission());
         $this->registerArgument(0, new RawStringArgument("player"));
         $this->registerArgument(1, new IntegerArgument("amount"));
     }
