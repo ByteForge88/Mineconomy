@@ -13,5 +13,7 @@
             "name": "ByteForge88"
         }
     ],
-    "require": {}
+    "require": {
+        "cortexpe/commando": "3.3.0",
+    }
 }
