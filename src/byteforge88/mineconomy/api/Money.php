@@ -80,7 +80,7 @@ class Money {
         $stmt->execute();
     }
     
-    public function formateMoney(int $amount) : void{
+    public function formateMoney(int $amount) : string{
         $str = number_format($amount);
         
         return "$" . $str;
