@@ -11,6 +11,9 @@ use byteforge88\mineconomy\database\Database;
 use byteforge88\mineconomy\command\BalanceCommand;
 use byteforge88\mineconomy\command\SeeBalanceCommand;
 use byteforge88\mineconomy\command\PayMoneyCommand;
+use byteforge88\mineconomy\command\AddMoneyCommand;
+use byteforge88\mineconomy\command\RemoveMoneyCommand;
+use byteforge88\mineconomy\command\SetBalanceCommand;
 
 use CortexPE\Commando\PacketHooker;
 
@@ -37,6 +40,9 @@ class Mineconomy extends PluginBase {
             new BalanceCommand($this, "balance", "Check your current balance", ["bal"]),
             new SeeBalanceCommand($this, "seebalance", "Check someone's balance", ["seebal"]),
             new PayMoneyCommand($this, "pay", "Pay someone"),
+            new AddMoneyCommand($this, "addmoney", "Add money to a player's balance"),
+            new RemoveMoneyCommand($this, "removemoney", "Remove money from a player's balance"),
+            new SetBalanceCommand($this, "setbalance", "Set a player's balance")
         ]);
     }
     

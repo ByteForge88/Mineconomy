@@ -47,6 +47,13 @@ class AddMoneyCommand extends BaseCommand {
             return;
         }
         
-        $money->
+        $formatted_amount = $money->formatMoney($amount);
+        
+        $money->addMoneyToBalance($args["player"], $amount);
+        $sender->sendMessage("You have added " . $formatted_amount . " to " . $args["player"] . " balance!");
+    }
+    
+    public function getPermission() : string{
+        return "mineconomy.add";
     }
 }
