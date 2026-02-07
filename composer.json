@@ -1,0 +1,17 @@
+{
+    "name": "byteforge88/mineconomy",
+    "description": "Simple economy system for PocketMine-MP",
+    "type": "project",
+    "license": "LGPL-3.0",
+    "autoload": {
+        "psr-4": {
+            "Byteforge88\\Mineconomy\\": "src/byteforge88/mineconomy/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ByteForge88"
+        }
+    ],
+    "require": {}
+}

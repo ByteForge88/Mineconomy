@@ -1,0 +1,19 @@
+name: Mineconomy
+version: 1.0.0
+author: ByteForge88
+api: 5.36.0
+main: byteforge88\mineconomy\Mineconomy
+
+permissions:
+  mineconomy.balance:
+    default: true
+  mineconomy.seebalance:
+    default: true
+  mineconomy.pay:
+    default: true
+  mineconomy.add:
+    default: op
+  mineconomy.remove:
+    default: op
+  mineconomy.set:
+    default: op
