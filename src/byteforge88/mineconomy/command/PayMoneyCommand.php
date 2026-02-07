@@ -74,7 +74,7 @@ class PayMoneyCommand extends BaseCommand {
         }
     }
     
-    public function getPermission() : void{
+    public function getPermission() : string{
         return "mineconomy.pay";
     }
 }
