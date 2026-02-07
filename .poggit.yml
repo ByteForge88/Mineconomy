@@ -5,5 +5,5 @@ branches:
 projects:
   Mineconomy:
     path: ""
-  lint: false
+    lint: false
 ...
