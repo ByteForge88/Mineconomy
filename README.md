@@ -30,6 +30,32 @@ use byteforge88\mineconomy\Mineconomy;
 $api = Mineconony::getInstance();
 ```
 
+**How to check if a player exists in the database**
+```php
+//You may pass either the player class or a string (username) as the first parameter
+//$player is an instance of Player::class
+
+$player
+
+//or
+
+$name = "steve";
+
+if ($api->isNew($player)) {
+    $player->sendMessage("Player not found!);
+    return;
+}
+
+//or
+
+if ($api->isNew($name)) {
+    //returns true meaning the player doesn't exist
+    return;
+}
+
+//If player exists it will ignore the statement
+```
+
 **How to retrieve a player's balance**
 ```php
 //You may pass either the player class or a string (username) as the first parameter
