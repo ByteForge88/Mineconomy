@@ -42,7 +42,7 @@ $player
 $name = "steve";
 
 if ($api->isNew($player)) {
-    $player->sendMessage("Player not found!);
+    $player->sendMessage("Player not found!");
     return;
 }
 
