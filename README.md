@@ -27,7 +27,7 @@ Check them out here!
 //Import this class
 use byteforge88\mineconomy\Mineconomy;
 
-$api = Mineconony::getInstance();
+$api = Mineconomy::getInstance();
 ```
 
 **How to check if a player exists in the database**
