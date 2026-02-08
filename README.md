@@ -23,7 +23,7 @@ Check them out here!
 
 # API for developer's
 **How to get the main instance**
-```
+```php
 //Import this class
 use byteforge88\mineconomy\Mineconomy;
 
@@ -31,7 +31,7 @@ $api = Mineconony::getInstance();
 ```
 
 **How to retrieve a player's balance**
-```
+```php
 //You may pass either the player class or a string (username) as the first parameter
 //$player is an instance of Player::class
 
@@ -49,7 +49,7 @@ $api->getBalance($name);
 ```
 
 **How to add money to a player's balance**
-```
+```php
 //You may pass either the player class or a string (username) as the first parameter
 //$player is an instance of Player::class
 
@@ -67,7 +67,7 @@ $api->addMoneyToBalance($name, 1000);
 ```
 
 **How to remove money from a player's balance**
-```
+```php
 //You may pass either the player class or a string (username) as the first parameter
 //$player is an instance of Player::class
 
@@ -85,7 +85,7 @@ $api->removeMoneyFromBalance($name, 1000);
 ```
 
 **How to set a player's balance**
-```
+```php
 //You may pass either the player class or a string (username) as the first parameter
 //$player is an instance of Player::class
 
@@ -103,7 +103,7 @@ $api->setBalance($name, 1000);
 ```
 
 **Random but may be useful, format amounts**
-```
+```php
 $api->formatMoney(1000);
 
 //outcome: $1,000
