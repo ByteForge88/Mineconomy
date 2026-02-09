@@ -58,8 +58,8 @@ class Mineconomy extends PluginBase {
         return $this->money->isNew($player);
     }
     
-    public function insertIntoDatabase($player, int $startinG_balance = 1000) : void{
-        $this->money->insertIntoDatabase($player, $amount);
+    public function insertIntoDatabase($player, int $starting_balance = 1000) : void{
+        $this->money->insertIntoDatabase($player, $starting_balance);
     }
     
     public function getBalance($player) : ?int{
