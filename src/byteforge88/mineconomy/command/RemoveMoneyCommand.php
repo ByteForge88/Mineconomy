@@ -11,8 +11,8 @@ use pocketmine\player\Player;
 use byteforge88\mineconomy\Mineconomy;
 
 use CortexPE\Commando\BaseCommand;
-use CortexPE\Commando\IntegerArgument;
-use CortexPE\Commando\RawStringArgument;
+use CortexPE\Commando\args\IntegerArgument;
+use CortexPE\Commando\args\RawStringArgument;
 
 class RemoveMoneyCommand extends BaseCommand {
     
