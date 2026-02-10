@@ -10,6 +10,8 @@ use Ifera\ScoreHud\ScoreHud;
 use Ifera\ScoreHud\scoreboard\ScoreTag;
 use Ifera\ScoreHud\event\PlayerTagUpdateEvent;
 
+use byteforge88\mineconomy\Mineconomy;
+
 class Scoreboard {
     
     public static function updateTag(Player $player) : void{
