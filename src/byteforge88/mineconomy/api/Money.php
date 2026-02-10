@@ -97,7 +97,7 @@ class Money {
     public function setBalance($player, int $amount) : void{
         $player = $player instanceof Player ? $player->getName() : $player;
         $e = new UpdateBalanceEvent($player, 1);
-        $stmt = Database::getInstance()->getSQL()->prepare("INSERT INTO balances SET balance = :amount WHERE player = :player;");
+        $stmt = Database::getInstance()->getSQL()->prepare("UPDATE balances SET balance = :amount WHERE player = :player;");
         
         $stmt->bindValue(":player", $player, SQLITE3_TEXT);
         $stmt->bindValue(":amount", $amount, SQLITE3_INTEGER);
