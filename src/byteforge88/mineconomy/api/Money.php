@@ -105,7 +105,7 @@ class Money {
         $e->call();
     }
     
-    public function formateMoney(int $amount) : string{
+    public function formatMoney(int $amount) : string{
         $str = number_format($amount);
         
         return "$" . $str;
