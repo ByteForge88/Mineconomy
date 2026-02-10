@@ -8,6 +8,7 @@ use pocketmine\player\Player;
 
 use byteforge88\mineconomy\Mineconomy;
 use byteforge88\mineconomy\database\Database;
+use byteforge88\mineconomy\event\UpdateBalanceEvent;
 
 class Money {
     
@@ -55,29 +56,35 @@ class Money {
     
     public function addMoneyToBalance($player, int $amount) : void{
         $player = $player instanceof Player ? $player->getName() : $player;
+        $e = new UpdateBalanceEvent($player, 0);
         $stmt = Database::getInstance()->getSQL()->prepare("UPDATE balances SET balance = balance + :amount WHERE player = :player;");
         
         $stmt->bindValue(":player", $player, SQLITE3_TEXT);
         $stmt->bindValue(":amount", $amount, SQLITE3_INTEGER);
         $stmt->execute();
+        $e->call();
     }
     
     public function removeMoneyFromBalance($player, int $amount) : void{
         $player = $player instanceof Player ? $player->getName() : $player;
+        $e = new UpdateBalanceEvent($player, 2);
         $stmt = Database::getInstance()->getSQL()->prepare("UPDATE balances SET balance = :balance - amount WHERE player = :player;");
         
         $stmt->bindValue(":player", SQLITE3_TEXT);
         $stmt->bindValue(":amount", $amount, SQLITE3_INTEGER);
         $stmt->execute();
+        $e->call();
     }
     
     public function setBalance($player, int $amount) : void{
         $player = $player instanceof Player ? $player->getName() : $player;
+        $e = new UpdateBalanceEvent($player, 1);
         $stmt = Database::getInstance()->getSQL()->prepare("INSERT INTO balances SET balance = :amount WHERE player = :player;");
         
         $stmt->bindValue(":player", $player, SQLITE3_TEXT);
         $stmt->bindValue(":amountr", $amount, SQLITE3_INTEGER);
         $stmt->execute();
+        $e->call();
     }
     
     public function formateMoney(int $amount) : string{

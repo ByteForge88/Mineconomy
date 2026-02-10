@@ -1,14 +1,21 @@
 # Description
 Super simple economic system to add to your server.
 
+ScoreHud is supported and the tag to display the balance is:
+
+Tag = ```{mineconomy.balance}```
+
+When adding the tag to the scorehuds settings please not that the tag comes with the "$" for example: {mineconomy.balance} => $1,000
+
 # Features
 - View yours or someone else's balance
 - Pay player's
 - Add, remove and set money
+- ScoreHud integration
 
 # TODO
-- [ ] [ScoreHud](https://github.com/Ifera/ScoreHud) integration
-- [ ] Custom messages
+- [x] [ScoreHud](https://github.com/Ifera/ScoreHud) integration
+- [ ] Custom messages and custom currency symbols.
 - [ ] Leaderboards
 
 # Specs
