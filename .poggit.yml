@@ -5,5 +5,8 @@ branches:
 projects:
   Mineconomy:
     path: ""
+    libs:
+       - src: CortexPE/Commando/Commando
+         version: ^3.3.0
     lint: false
 ...
