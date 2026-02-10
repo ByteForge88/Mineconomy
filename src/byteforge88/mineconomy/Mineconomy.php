@@ -15,6 +15,7 @@ use byteforge88\mineconomy\command\AddMoneyCommand;
 use byteforge88\mineconomy\command\RemoveMoneyCommand;
 use byteforge88\mineconomy\command\SetBalanceCommand;
 use byteforge88\mineconomy\command\TopBalancesCommand;
+use byteforge88\mineconomy\command\FloatingTextLBCommand;
 
 use CortexPE\Commando\PacketHooker;
 
@@ -32,6 +33,7 @@ class Mineconomy extends PluginBase {
         $this->money = new Money($this);
         $server = $this->getServer();
         
+        //PocketMine doesn't have built-in command parameters support...
         if (!PacketHooker::isRegistered()) {
             PacketHooker::register($this);
         }
@@ -44,7 +46,8 @@ class Mineconomy extends PluginBase {
             new AddMoneyCommand($this, "addmoney", "Add money to a player's balance"),
             new RemoveMoneyCommand($this, "removemoney", "Remove money from a player's balance"),
             new SetBalanceCommand($this, "setbalance", "Set a player's balance"),
-            new TopBalancesCommand($this, "topbalances", "Check out the top 10 balances", ["topbal"])
+            new TopBalancesCommand($this, "topbalances", "Check out the top 10 balances", ["topbal"]),
+            new FloatingTextLBCommand($this, "floatingtextlb", "Spawn a floating text with the top 10 balances", ["ftlb"])
         ]);
     }
     

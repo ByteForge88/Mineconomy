@@ -16,7 +16,12 @@ class Database {
     protected SQLite3 $sql;
     
     public function __construct() {
-        $this->sql = new SQLite3(Mineconomy::getInstance()->getDataFolder() . "database.db");
+        $mineconomy = Mineconomy::getInstance();
+        $folder = $mineconomy->getDataFolder() . "database/";
+        
+        @mkdir($folder);
+        
+        $this->sql = new SQLite3($folder . "database.db");
         
         $this->sql->exec("CREATE TABLE IF NOT EXISTS balances (player TEXT PRIMARY KEY, balance INT);");
     }

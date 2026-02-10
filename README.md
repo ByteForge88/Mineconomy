@@ -16,9 +16,9 @@ When adding the tag to the scorehuds settings please note that the tag comes wit
 
 # TODO
 - [x] [ScoreHud](https://github.com/Ifera/ScoreHud) integration
-- [ ] Custom messages and custom currency symbols.
+- [ ] Custom messages and custom currency symbols
 - [x] Leaderboards
-- [ ] Floating text displaying the leaderboards
+- [x] Floating text displaying the leaderboards
 
 # Specs
 - Requires [PocketMine-MP](https://github.com/pmmp/PocketMine-MP) API 5.36.0-latest

@@ -19,3 +19,5 @@ permissions:
     default: op
   mineconomy.set:
     default: op
+  mineconomy.floatingtext:
+    default: op
