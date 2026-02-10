@@ -72,7 +72,7 @@ class Mineconomy extends PluginBase {
     }
     
     public function getTopBalances(int $limit = 10) : array{
-        return $this->money->getBalance($limit);
+        return $this->money->getTopBalances($limit);
     }
     
     public function addMoneyToBalance($player, int $amount) : void{
