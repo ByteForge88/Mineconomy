@@ -54,6 +54,24 @@ class Money {
         return (int) $data["balance"];
     }
     
+    public function getTopBalances(int $limit) : array{
+        $stmt = Database::getInstance()->getSQL()->prepare("SELECT player, balance FROM balances ORDER BY balance DESC LIMIT :limit");
+        
+        $stmt->bindValue(":limit", $limit, SQLITE3_INTEGER);
+        
+        $result = $stmt->execute();
+        $data = [];
+        
+        while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
+            $data[] = [
+                "player" => $row["player"],
+                "balance" => (int) $row["balance"]
+            ];
+        }
+        
+        return $data;
+    }
+    
     public function addMoneyToBalance($player, int $amount) : void{
         $player = $player instanceof Player ? $player->getName() : $player;
         $e = new UpdateBalanceEvent($player, 0);

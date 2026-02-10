@@ -14,6 +14,7 @@ use byteforge88\mineconomy\command\PayMoneyCommand;
 use byteforge88\mineconomy\command\AddMoneyCommand;
 use byteforge88\mineconomy\command\RemoveMoneyCommand;
 use byteforge88\mineconomy\command\SetBalanceCommand;
+use byteforge88\mineconomy\command\TopBalancesCommand;
 
 use CortexPE\Commando\PacketHooker;
 
@@ -42,7 +43,8 @@ class Mineconomy extends PluginBase {
             new PayMoneyCommand($this, "pay", "Pay someone"),
             new AddMoneyCommand($this, "addmoney", "Add money to a player's balance"),
             new RemoveMoneyCommand($this, "removemoney", "Remove money from a player's balance"),
-            new SetBalanceCommand($this, "setbalance", "Set a player's balance")
+            new SetBalanceCommand($this, "setbalance", "Set a player's balance"),
+            new TopBalancesCommand($this, "topbalances", "Check out the top 10 balances", ["topbal"])
         ]);
     }
     
@@ -64,6 +66,10 @@ class Mineconomy extends PluginBase {
     
     public function getBalance($player) : ?int{
         return $this->money->getBalance($player);
+    }
+    
+    public function getTopBalances(int $limit = 10) : array{
+        return $this->money->getBalance($limit);
     }
     
     public function addMoneyToBalance($player, int $amount) : void{

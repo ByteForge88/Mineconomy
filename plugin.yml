@@ -11,6 +11,8 @@ permissions:
     default: true
   mineconomy.pay:
     default: true
+  mineconomy.top:
+    default: true
   mineconomy.add:
     default: op
   mineconomy.remove:
