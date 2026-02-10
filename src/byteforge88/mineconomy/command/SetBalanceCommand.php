@@ -11,8 +11,8 @@ use pocketmine\player\Player;
 use byteforge88\mineconomy\Mineconomy;
 
 use CortexPE\Commando\BaseCommand;
-use CortexPE\Commando\IntegerArgument;
-use CortexPE\Commando\RawStringArgument;
+use CortexPE\Commando\args\IntegerArgument;
+use CortexPE\Commando\args\RawStringArgument;
 
 class SetBalanceCommand extends BaseCommand {
     
@@ -22,7 +22,7 @@ class SetBalanceCommand extends BaseCommand {
         $this->registerArgument(1, new IntegerArgument("amount"));
     }
     
-    public function onRun(CommandSendr $sender, string $aliasUsed, array $args) : void{
+    public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void{
         if (!$sender instanceof Player) {
             $sender->sendMessage("Use this command in-game!");
             return;
