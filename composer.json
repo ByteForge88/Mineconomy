@@ -9,7 +9,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Byteforge88\\Mineconomy\\": "src/byteforge88/mineconomy/"
+            "Byteforge88\\Mineconomy-PMMP\\": "src/"
         }
     }
 }
