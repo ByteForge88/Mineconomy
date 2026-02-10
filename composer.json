@@ -3,17 +3,13 @@
     "description": "Simple economy system for PocketMine-MP",
     "type": "project",
     "license": "LGPL-3.0",
+    "require": {
+        "pocketmine/pocketmine-mp": "5.36.0",
+        "terpz710/commando": "*"
+    },
     "autoload": {
         "psr-4": {
             "Byteforge88\\Mineconomy\\": "src/byteforge88/mineconomy/"
         }
-    },
-    "authors": [
-        {
-            "name": "ByteForge88"
-        }
-    ],
-    "require": {
-        "cortexpe/commando": "*"
     }
 }
