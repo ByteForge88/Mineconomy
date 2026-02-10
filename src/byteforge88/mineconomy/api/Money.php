@@ -86,7 +86,7 @@ class Money {
     public function removeMoneyFromBalance($player, int $amount) : void{
         $player = $player instanceof Player ? $player->getName() : $player;
         $e = new UpdateBalanceEvent($player, 2);
-        $stmt = Database::getInstance()->getSQL()->prepare("UPDATE balances SET balance = :balance - amount WHERE player = :player;");
+        $stmt = Database::getInstance()->getSQL()->prepare("UPDATE balances SET balance = balance - :amount WHERE player = :player;");
         
         $stmt->bindValue(":player", SQLITE3_TEXT);
         $stmt->bindValue(":amount", $amount, SQLITE3_INTEGER);
@@ -100,7 +100,7 @@ class Money {
         $stmt = Database::getInstance()->getSQL()->prepare("INSERT INTO balances SET balance = :amount WHERE player = :player;");
         
         $stmt->bindValue(":player", $player, SQLITE3_TEXT);
-        $stmt->bindValue(":amountr", $amount, SQLITE3_INTEGER);
+        $stmt->bindValue(":amount", $amount, SQLITE3_INTEGER);
         $stmt->execute();
         $e->call();
     }
