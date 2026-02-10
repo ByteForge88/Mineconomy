@@ -19,7 +19,7 @@ use pocketmine\Server;
 use byteforge88\mineconomy\scoreboard\Scoreboard;
 use byteforge88\mineconomy\event\UpdateBalanceEvent;
 use byteforge88\mineconomy\floatingtext\FloatingText;
-use byteforge88\mineconomy\floatingtext\FloatingTextLB;
+use byteforge88\mineconomy\floatingtext\leaderboard\FloatingTextLB;
 
 use Ifera\ScoreHud\event\TagsResolveEvent;
 
