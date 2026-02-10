@@ -50,7 +50,7 @@ class SetBalanceCommand extends BaseCommand {
         $formatted_amount = $money->formatMoney($amount);
         
         $money->setBalance($args["player"], $amount);
-        $sender->sendMessage("You have set the balance of " . args["player"] . " to " . $formatted_amount . "!");
+        $sender->sendMessage("You have set the balance of " . $args["player"] . " to " . $formatted_amount . "!");
     }
     
     public function getPermission() : string{
