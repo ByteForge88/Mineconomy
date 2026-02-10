@@ -12,7 +12,7 @@ class FloatingTextLB {
     public static function updateFloatingText() : void{
         $mineconomy = Mineconomy::getInstance();
         $top_balances = $mineconomy->getTopBalances();
-        $text = "-= Top 10 Balances =-";
+        $text = "-= Top 10 Balances =-\n";
         $i = 1;
         
         foreach ($top_balances as $data) {

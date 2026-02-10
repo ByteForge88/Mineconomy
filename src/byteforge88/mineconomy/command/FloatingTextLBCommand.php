@@ -28,7 +28,7 @@ class FloatingTextLBCommand extends BaseCommand {
         $position = $sender->getPosition();
         $mineconomy = Mineconomy::getInstance();
         $top_balances = $mineconomy->getTopBalances();
-        $text = "-= Top 10 Balances =-";
+        $text = "-= Top 10 Balances =-\n";
         $i = 1;
         
         foreach ($top_balances as $data) {

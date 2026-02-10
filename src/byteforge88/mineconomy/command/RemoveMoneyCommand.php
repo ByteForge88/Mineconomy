@@ -49,7 +49,7 @@ class RemoveMoneyCommand extends BaseCommand {
         
         $target_balance = $money->getBalance($args["player"]);
         
-        if ($target < $amount) {
+        if ($target_balance < $amount) {
             $sender->sendMessage("This player doesn't have enough money to remove!");
             return;
         }
