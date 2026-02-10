@@ -3,8 +3,6 @@ version: 1.0.0
 author: ByteForge88
 api: 5.36.0
 main: byteforge88\mineconomy\Mineconomy
-depend:
-  - Commando
 
 permissions:
   mineconomy.balance:
