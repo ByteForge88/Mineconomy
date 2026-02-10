@@ -5,7 +5,7 @@ ScoreHud is supported and the tag to display the balance is:
 
 Tag = ```{mineconomy.balance}```
 
-When adding the tag to the scorehuds settings please not that the tag comes with the "$" for example: {mineconomy.balance} => $1,000
+When adding the tag to the scorehuds settings please note that the tag comes with the "$" for example: {mineconomy.balance} => $1,000
 
 # Features
 - View yours or someone else's balance
