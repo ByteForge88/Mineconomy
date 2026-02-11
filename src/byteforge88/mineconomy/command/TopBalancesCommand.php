@@ -33,7 +33,7 @@ class TopBalancesCommand extends BaseCommand {
         
         foreach ($top_balances as $data) {
             $balance = $money->formatMoney($data["balance"]);
-            $sender->sendMessage((string) new Message("leaderboard-2", ["{position}", "{name}", "{balance}"], [$i, $data["player"], $balance]));
+            $sender->sendMessage((string) new Message("leaderboard-2", ["{position}", "{player}", "{balance}"], [$i, $data["player"], $balance]));
             $i++;
         }
     }
