@@ -21,7 +21,7 @@ class BalanceCommand extends BaseCommand {
     
     public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void{
         if (!$sender instanceof Player) {
-            $sender->sendMessage("Use this command in-game!");
+            $sender->sendMessage((string) new Message("use-command-ingame"));
             return;
         }
         
