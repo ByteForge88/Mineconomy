@@ -13,10 +13,12 @@ When adding the tag to the scorehuds settings please note that the tag comes wit
 - Add, remove and set money
 - ScoreHud integration
 - Leaderboards
+- Custom currency symbols
+- Custom messages
 
 # TODO
 - [x] [ScoreHud](https://github.com/Ifera/ScoreHud) integration
-- [ ] Custom messages and custom currency symbols
+- [x] Custom messages and custom currency symbols
 - [x] Leaderboards
 - [x] Floating text displaying the leaderboards
 

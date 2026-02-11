@@ -9,6 +9,7 @@ use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 
 use byteforge88\mineconomy\Mineconomy;
+use byteforge88\mineconomy\utils\Message;
 
 use CortexPE\Commando\BaseCommand;
 
@@ -20,7 +21,7 @@ class TopBalancesCommand extends BaseCommand {
     
     public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void{
         if (!$sender instanceof Player) {
-            $sender->sendMessage("Use this command in-game!");
+            $sender->sendMessage((string) new Message("use-command-ingame"));
             return;
         }
         
@@ -28,11 +29,11 @@ class TopBalancesCommand extends BaseCommand {
         $top_balances = $money->getTopBalances();
         $i = 1;
         
-        $sender->sendMessage("-= Top 10 Balances =-");
+        $sender->sendMessage((string) new Message("leaderboard-1"));
         
         foreach ($top_balances as $data) {
             $balance = $money->formatMoney($data["balance"]);
-            $sender->sendMessage($i . ". " . $data["player"] . " - " . $balance . "\n");
+            $sender->sendMessage((string) new Message("leaderboard-2", ["{position}", "{name}", "{balance}"], [$i, $data["player"], $balance]));
             $i++;
         }
     }

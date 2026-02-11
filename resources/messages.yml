@@ -1,0 +1,94 @@
+# Messages configuration
+# Here you will find all the customizable Messages
+
+# You may use "&" as the color codes
+# For example: "&dThis message is pink&r"
+
+# Message when a player runs a command outside the server
+use-command-ingame: "Use this command in-game!"
+
+# Message when a player is not found within the database
+player-not-found: "Player not found!"
+
+# Message when the amount is not a number
+amount-not-a-number: "Amount must be a number!"
+
+# Message when the amount is less than 0
+amount-cannot-be-negative: "Amount must be larger than 0!"
+
+# Message when checking out your current balance
+# NOTE: You don't have to include a currency symbol check "config.yml"
+# Available tags:
+# - {balance} => your current balance
+your-balance: "Balance: {balance}"
+
+# Message when an operator successfully adds money to a players balance
+# NOTE: You don't have to include a currency symbol check "config.yml"
+# Available tags:
+# - {player} => the players name
+# - {amount} => the amount given
+successfully-added-money: "You have added {amount} to {player} balance!"
+
+# Message when an operator spawns in the floating text leaderboard
+# NOTE: You don't have to include a currency symbol check "config.yml"
+# CAUTION: DO NOT remove the "\n" from the end
+# Available tags:
+# - {position} => the players position within the leaderboard
+# - {player} => the players name
+# - {balance} => the balance
+floating-text-lb-1: "-= Top 10 Balances =-\n"
+floating-text-lb-2: "{position}. {player} - {balance}\n"
+
+# Message when you try to pay yourself
+cannot-pay-yourself: "You can't pay yourself!"
+
+# Message when you try to pay someone but the player is broke
+not-enough-money: "You don't have enough money!"
+
+# Message when a player doesn't have enough money to remove
+player-not-enough-money: "This player doesn't have enough money to remove!"
+
+# Message when a player successfully paid someone
+# NOTE: You don't have to include a currency symbol check "config.yml"
+# Available tags:
+# - {player} => the players name
+# - {amount} => the amount given
+successfully-paid: "You have paid {amount} to {player}!"
+
+# Message when the successfully recieves the payment if they're online
+# NOTE: You don't have to include a currency symbol check "config.yml"
+# Available tags:
+# - {player} => the players name
+# - {amount} => the amount given
+recieved-payment: "{player} has paid you {amount}!"
+
+# Message when an operator successfully removes money from a players balance
+# NOTE: You don't have to include a currency symbol check "config.yml"
+# Available tags:
+# - {player} => the players name
+# - {amount} => the amount taken
+successfully-removed-money: "You have removed {amount} from {player} balance!"
+
+# Message when someone checks a balance of someone else
+# NOTE: You don't have to include a currency symbol check "config.yml"
+# Available tags:
+# - {player} => the players name
+# - {balance} => the players balance
+someones-balance: "{player} balance: {balance}"
+
+# Message when an operator successfully sets the balance of a player
+# NOTE: You don't have to include a currency symbol check "config.yml"
+# Available tags:
+# - {player} => the players name
+# - {balance} => the players new balance
+successfully-set-balance: "You have set the balance of {player} to {balance}!"
+
+# Message when displaying the leaderboard ingame
+# NOTE: You don't have to include a currency symbol check "config.yml"
+# CAUTION: DO NOT remove the "\n" from the end
+# Available tags:
+# - {position} => the players position within the leaderboard
+# - {player} => the players name
+# - {balance} => the balance
+leaderboard-1: "-= Top 10 Balances =-"
+leaderboard-2: "{position}. {player} - {balance}\n"

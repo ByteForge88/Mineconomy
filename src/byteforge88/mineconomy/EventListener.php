@@ -16,6 +16,7 @@ use pocketmine\player\Player;
 
 use pocketmine\Server;
 
+use byteforge88\mineconomy\utils\Utils;
 use byteforge88\mineconomy\scoreboard\Scoreboard;
 use byteforge88\mineconomy\event\UpdateBalanceEvent;
 use byteforge88\mineconomy\floatingtext\FloatingText;
@@ -30,7 +31,7 @@ class EventListener implements Listener {
         $api = Mineconomy::getInstance();
         
         if ($api->isNew($player)) {
-            $api->insertIntoDatabase($player);//TODO: Add customizable starting balances
+            $api->insertIntoDatabase($player, Utils::getStartingBalance());
         }
     }
     

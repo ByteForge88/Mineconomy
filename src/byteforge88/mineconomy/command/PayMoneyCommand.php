@@ -11,6 +11,7 @@ use pocketmine\player\Player;
 use pocketmine\Server;
 
 use byteforge88\mineconomy\Mineconomy;
+use byteforge88\mineconomy\utils\Message;
 
 use CortexPE\Commando\BaseCommand;
 use CortexPE\Commando\args\IntegerArgument;
@@ -26,38 +27,38 @@ class PayMoneyCommand extends BaseCommand {
     
     public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void{
         if (!$sender instanceof Player) {
-            $sender->sendMessage("Use this command in-game!");
+            $sender->sendMessage((string) new Message("use-command-ingame"));
             return;
         }
         
         $money = Mineconomy::getInstance();
         
         if ($money->isNew($args["player"])) {
-            $sender->sendMessage("Player not found!");
+            $sender->sendMessage((string) new Message("player-not-found"));
             return;
         }
         
         if ($sender->getName() === $args["player"]) {
-            $sender->sendMessage("You can't pay yourself!");
+            $sender->sendMessage((string) new Message("cannot-pay-yourself"));
             return;
         }
         
         $amount = (int) $args["amount"];
         
         if (!is_numeric($amount)) {
-            $sender->sendMessage("Amount must be a number!");
+            $sender->sendMessage((string) new Message("amount-not-a-number"));
             return;
         }
         
         if ($amount <= 0) {
-            $sender->sendMessage("Amount must be larger than 0!");
+            $sender->sendMessage((string) new Message("amount-cannot-be-negative"));
             return;
         }
         
         $sender_balance = $money->getBalance($sender);
         
         if ($sender_balance < $amount) {
-            $sender->sendMessage("You don't have enough money!");
+            $sender->sendMessage((string) new Message("not-enough-money"));
             return;
         }
         
@@ -65,12 +66,12 @@ class PayMoneyCommand extends BaseCommand {
         
         $money->removeMoneyFromBalance($args["player"], $amount);
         $money->addMoneyToBalance($args["player"], $amount);
-        $sender->sendMessage("You have paid " . $formatted_amount . " to " . $args["player"] . "!");
+        $sender->sendMessage((string) new Message("successfully-paid", ["{player}", "{amount}"], [$args["player"], $formatted_amount]));
         
         $player = Server::getInstance()->getPlayerExact($args["player"]);
         
         if ($player !== null) {
-            $player->sendMessage($sender->getName() . " has paid you " . $formatted_amount . "!");
+            $player->sendMessage((string) new Message("recieved-payment", ["{player}", "{amount}"], [$sender->getName(), $formatted_amount]));
         }
     }
     

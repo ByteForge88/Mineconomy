@@ -9,6 +9,7 @@ use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 
 use byteforge88\mineconomy\Mineconomy;
+use byteforge88\mineconomy\utils\Message;
 
 use CortexPE\Commando\BaseCommand;
 
@@ -28,7 +29,7 @@ class BalanceCommand extends BaseCommand {
         $balance = $money->getBalance($sender);
         $formatted_amount = $money->formatMoney($balance);
         
-        $sender->sendMessage("Your balance: " . $formatted_amount);
+        $sender->sendMessage((string) new Message("your-balance", "{balance}", $formatted_amount));
     }
     
     public function getPermission() : string{

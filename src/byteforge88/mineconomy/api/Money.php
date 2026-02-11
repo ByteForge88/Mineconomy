@@ -88,7 +88,7 @@ class Money {
         $e = new UpdateBalanceEvent($player, 2);
         $stmt = Database::getInstance()->getSQL()->prepare("UPDATE balances SET balance = balance - :amount WHERE player = :player;");
         
-        $stmt->bindValue(":player", SQLITE3_TEXT);
+        $stmt->bindValue(":player", $player, SQLITE3_TEXT);
         $stmt->bindValue(":amount", $amount, SQLITE3_INTEGER);
         $stmt->execute();
         $e->call();
@@ -108,6 +108,6 @@ class Money {
     public function formatMoney(int $amount) : string{
         $str = number_format($amount);
         
-        return "$" . $str;
+        return Utils::getCurrencySymbol() . $str;
     }
 }

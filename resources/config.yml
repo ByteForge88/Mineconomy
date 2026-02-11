@@ -1,0 +1,10 @@
+# Main configuration
+# Here you will find the following:
+# - Starting balances
+# - Custom currency symbol
+
+# Starting balances:
+starting-balance: 1000
+
+# Currency symbol:
+currency-symbol: "$"

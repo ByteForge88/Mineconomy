@@ -6,6 +6,8 @@ namespace byteforge88\mineconomy;
 
 use pocketmine\plugin\PluginBase;
 
+use pocketmine\utils\Config;
+
 use byteforge88\mineconomy\api\Money;
 use byteforge88\mineconomy\database\Database;
 use byteforge88\mineconomy\command\BalanceCommand;
@@ -25,12 +27,18 @@ class Mineconomy extends PluginBase {
     
     private Money $money;
     
+    public Config $messages;
+    
     protected function onLoad() : void{
         self::$instance = $this;
     }
     
     protected function onEnable() : void{
+        $this->saveDefaultConfig();
+        $this->saveResource("messages.yml");
+        
         $this->money = new Money($this);
+        $this->messages = new Config($this->getDataFolder() . "messages.yml");
         $server = $this->getServer();
         
         //PocketMine doesn't have built-in command parameters support...

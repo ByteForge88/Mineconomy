@@ -9,6 +9,7 @@ use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 
 use byteforge88\mineconomy\Mineconomy;
+use byteforge88\mineconomy\utils\Message;
 use byteforge88\mineconomy\floatingtext\FloatingText;
 
 use CortexPE\Commando\BaseCommand;
@@ -28,12 +29,12 @@ class FloatingTextLBCommand extends BaseCommand {
         $position = $sender->getPosition();
         $mineconomy = Mineconomy::getInstance();
         $top_balances = $mineconomy->getTopBalances();
-        $text = "-= Top 10 Balances =-\n";
+        $text = (string) new Message("floating-text-lb-1");
         $i = 1;
         
         foreach ($top_balances as $data) {
             $balance = $mineconomy->formatMoney($data["balance"]);
-            $text .= $i . ". " . $data["player"] . " - " . $balance . "\n";
+            $text .= (string) new Message("floating-text-lb-2", ["{position}", "{player}", "{balance}"], [$i, $data["player"], $balance]);
             $i++;
         }
         
