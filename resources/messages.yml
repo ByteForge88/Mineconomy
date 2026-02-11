@@ -1,7 +1,7 @@
 # Messages configuration
 # Here you will find all the customizable Messages
 
-# You may use "&" as the color codes
+# You may use "&" as the color code
 # For example: "&dThis message is pink&r"
 
 # Message when a player runs a command outside the server
@@ -42,7 +42,7 @@ floating-text-lb-2: "{position}. {player} - {balance}\n"
 # Message when you try to pay yourself
 cannot-pay-yourself: "You can't pay yourself!"
 
-# Message when you try to pay someone but the player is broke
+# Message when a player try to pay someone but the player is broke
 not-enough-money: "You don't have enough money!"
 
 # Message when a player doesn't have enough money to remove
