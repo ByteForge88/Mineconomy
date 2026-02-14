@@ -20,57 +20,76 @@ class Money {
         $player = $player instanceof Player ? $player->getName() : $player;
         $stmt = Database::getInstance()->getSQL()->prepare("SELECT * FROM balances WHERE player = :player;");
         
-        $stmt->bindValue(":player", $player, SQLITE3_TEXT);
-        
-        $data = $stmt->execute()->fetchArray(SQLITE3_ASSOC);
-        
-        if ($data === false) {
-            return true;
+        try {
+            $stmt->bindValue(":player", $player, SQLITE3_TEXT);
+            
+            $result = $stmt->execute();
+            $data = $result->fetchArray(SQLITE3_ASSOC);
+            
+            $result->finalize();
+            
+            return $data === false ? true : false;
+        } finally {
+            $stmt->close();
         }
-        
-        return false;
     }
     
     public function insertIntoDatabase($player, int $starting_balance) : void{
         $player = $player instanceof Player ? $player->getName() : $player;
         $stmt = Database::getInstance()->getSQL()->prepare("INSERT INTO balances (player, balance) VALUES (:player, :balance)");
         
-        $stmt->bindValue(":player", $player, SQLITE3_TEXT);
-        $stmt->bindValue(":balance", $starting_balance, SQLITE3_INTEGER);
-        $stmt->execute();
+        try {
+            $stmt->bindValue(":player", $player, SQLITE3_TEXT);
+            $stmt->bindValue(":balance", $starting_balance, SQLITE3_INTEGER);
+            
+            $result = $stmt->execute();
+            
+            $result->finalize();
+        } finally {
+            $stmt->close();
+        }
     }
     
     public function getBalance($player) : ?int{
         $player = $player instanceof Player ? $player->getName() : $player;
         $stmt = Database::getInstance()->getSQL()->prepare("SELECT balance FROM balances WHERE player = :player;");
         
-        $stmt->bindValue(":player", $player, SQLITE3_TEXT);
-        
-        $data = $stmt->execute()->fetchArray(SQLITE3_ASSOC);
-        
-        if ($data === false) {
-            return null;
+        try {
+            $stmt->bindValue(":player", $player, SQLITE3_TEXT);
+            
+            $result = $stmt->execute();
+            $data = $result->fetchArray(SQLITE3_ASSOC);
+            
+            $result->finalize();
+            
+            return $data === false ? null : (int) $data["balance"];
+        } finally {
+            $stmt->close();
         }
-        
-        return (int) $data["balance"];
     }
     
     public function getTopBalances(int $limit) : array{
         $stmt = Database::getInstance()->getSQL()->prepare("SELECT player, balance FROM balances ORDER BY balance DESC LIMIT :limit");
         
-        $stmt->bindValue(":limit", $limit, SQLITE3_INTEGER);
-        
-        $result = $stmt->execute();
-        $data = [];
-        
-        while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
-            $data[] = [
-                "player" => $row["player"],
-                "balance" => (int) $row["balance"]
-            ];
+        try {
+            $stmt->bindValue(":limit", $limit, SQLITE3_INTEGER);
+            
+            $result = $stmt->execute();
+            $data = [];
+            
+            while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
+                $data[] = [
+                    "player" => $row["player"],
+                    "balance" => (int) $row["balance"]
+                ];
+            }
+            
+            $result->finalize();
+            
+            return $data;
+        } finally {
+            $stmt->close();
         }
-        
-        return $data;
     }
     
     public function addMoneyToBalance($player, int $amount) : void{
@@ -78,21 +97,35 @@ class Money {
         $e = new UpdateBalanceEvent($player, 0);
         $stmt = Database::getInstance()->getSQL()->prepare("UPDATE balances SET balance = balance + :amount WHERE player = :player;");
         
-        $stmt->bindValue(":player", $player, SQLITE3_TEXT);
-        $stmt->bindValue(":amount", $amount, SQLITE3_INTEGER);
-        $stmt->execute();
-        $e->call();
+        try {
+            $stmt->bindValue(":player", $player, SQLITE3_TEXT);
+            $stmt->bindValue(":amount", $amount, SQLITE3_INTEGER);
+            
+            $result = $stmt->execute();
+            
+            $result->finalize();
+        } finally {
+            $stmt->close();
+            $e->call();
+        }
     }
     
     public function removeMoneyFromBalance($player, int $amount) : void{
         $player = $player instanceof Player ? $player->getName() : $player;
         $e = new UpdateBalanceEvent($player, 2);
-        $stmt = Database::getInstance()->getSQL()->prepare("UPDATE balances SET balance = balance - :amount WHERE player = :player;");
+        $stmt = Database::getInstance()->getSQL()->prepare("UPDATE balances SET MAX(balance = balance - :amount, 0) WHERE player = :player;");
         
-        $stmt->bindValue(":player", $player, SQLITE3_TEXT);
-        $stmt->bindValue(":amount", $amount, SQLITE3_INTEGER);
-        $stmt->execute();
-        $e->call();
+        try {
+            $stmt->bindValue(":player", $player, SQLITE3_TEXT);
+            $stmt->bindValue(":amount", $amount, SQLITE3_INTEGER);
+            
+            $result = $stmt->execute();
+            
+            $result->finalize();
+        } finally {
+            $stmt->close();
+            $e->call();
+        }
     }
     
     public function setBalance($player, int $amount) : void{
@@ -100,10 +133,17 @@ class Money {
         $e = new UpdateBalanceEvent($player, 1);
         $stmt = Database::getInstance()->getSQL()->prepare("UPDATE balances SET balance = :amount WHERE player = :player;");
         
-        $stmt->bindValue(":player", $player, SQLITE3_TEXT);
-        $stmt->bindValue(":amount", $amount, SQLITE3_INTEGER);
-        $stmt->execute();
-        $e->call();
+        try {
+            $stmt->bindValue(":player", $player, SQLITE3_TEXT);
+            $stmt->bindValue(":amount", $amount, SQLITE3_INTEGER);
+            
+            $result = $stmt->execute();
+            
+            $result->finalize();
+        } finally {
+            $stmt->close();
+            $e->call();
+        }
     }
     
     public function formatMoney(int $amount) : string{
